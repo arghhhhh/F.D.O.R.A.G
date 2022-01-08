@@ -41,6 +41,9 @@ namespace Joss.Helpers
 
             float to = toAbs + toMin;
 
+            if (to > toMax)
+                to = toMax;
+
             return to;
         }
 
@@ -63,7 +66,28 @@ namespace Joss.Helpers
             return true;
 
         return false;
-        }   
+        }
+
+        public static int RandomSign()
+        {
+            return Random.Range(0, 2) * 2 - 1;
+        }
+
+        public static float AdaptScaleMax(float f, List<float> l, int t)
+        {
+            //change the scale of a lerp function based on the avg of the last t number of calls
+            l.Add(f);
+            if (l.Count > t)
+                l.RemoveAt(0);
+            float total = 0;
+            foreach (float item in l)
+            {
+                total += item;
+            }
+            total = total / l.Count;
+            float max = total * 2;
+            return max;
+        }
 
     }
 }

@@ -1,5 +1,5 @@
 {
-    "m_SGVersion": 2,
+    "m_SGVersion": 3,
     "m_Type": "UnityEditor.ShaderGraph.GraphData",
     "m_ObjectId": "894ea5c2ffc54382ad2763194564f6cf",
     "m_Properties": [
@@ -23,6 +23,12 @@
         }
     ],
     "m_Keywords": [],
+    "m_Dropdowns": [],
+    "m_CategoryData": [
+        {
+            "m_Id": "7d7a10a854cc43c8b4448d06bb8e8afd"
+        }
+    ],
     "m_Nodes": [
         {
             "m_Id": "7d25be6d8cf1d0898bba7e12842e9d59"
@@ -331,10 +337,11 @@
         "serializedMesh": {
             "m_SerializedMesh": "{\"mesh\":{\"fileID\":10210,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
-        }
+        },
+        "preventRotation": false
     },
     "m_Path": "Shader Graphs",
-    "m_ConcretePrecision": 0,
+    "m_GraphPrecision": 0,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": ""
@@ -359,12 +366,14 @@
     "m_DefaultReferenceName": "OffsetSmall",
     "m_OverrideReferenceName": "_OffsetSmall",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "x": -0.2800000011920929,
+        "x": 0.0,
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
@@ -519,6 +528,8 @@
     "m_DefaultReferenceName": "Vector1_473F314E",
     "m_OverrideReferenceName": "_Sidez",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -923,17 +934,23 @@
 }
 
 {
-    "m_SGVersion": 0,
+    "m_SGVersion": 1,
     "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalTarget",
     "m_ObjectId": "6bc6701e437d4a538e12f28bd05bbbac",
     "m_ActiveSubTarget": {
         "m_Id": "290fa26c7d3d462abd928dd0f73c2046"
     },
+    "m_AllowMaterialOverride": false,
     "m_SurfaceType": 1,
+    "m_ZTestMode": 4,
+    "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
-    "m_TwoSided": true,
+    "m_RenderFace": 0,
     "m_AlphaClip": false,
-    "m_CustomEditorGUI": ""
+    "m_CastShadows": true,
+    "m_ReceiveShadows": true,
+    "m_CustomEditorGUI": "",
+    "m_SupportVFX": false
 }
 
 {
@@ -1196,6 +1213,33 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "7d7a10a854cc43c8b4448d06bb8e8afd",
+    "m_Name": "",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "d7ef6468306ca08d9db69cc1af1f87c0"
+        },
+        {
+            "m_Id": "0b14c8a81fb2118099577a69ce63e638"
+        },
+        {
+            "m_Id": "89e14175bf0c4c06ba6b381199e39b1e"
+        },
+        {
+            "m_Id": "e30eb0a0a1874e96bdb1553dc04ae32b"
+        },
+        {
+            "m_Id": "0044dae9dbb54809a66a33ff1407d996"
+        },
+        {
+            "m_Id": "d4dc201afdf144b1ad1abca322b6d229"
+        }
+    ]
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "7debdeccb87d4f7ca17c7068b1af41dd",
     "m_Id": 1,
@@ -1325,6 +1369,8 @@
     "m_DefaultReferenceName": "OuterSize",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1711,6 +1757,8 @@
     "m_DefaultReferenceName": "Rotation",
     "m_OverrideReferenceName": "_Rotation",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1736,6 +1784,8 @@
     "m_DefaultReferenceName": "Color_A6577C90",
     "m_OverrideReferenceName": "_Colorz",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1746,6 +1796,7 @@
         "b": 1.0,
         "a": 0.0
     },
+    "isMainColor": false,
     "m_ColorMode": 1
 }
 
@@ -1819,6 +1870,8 @@
     "m_DefaultReferenceName": "InnerSize",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,

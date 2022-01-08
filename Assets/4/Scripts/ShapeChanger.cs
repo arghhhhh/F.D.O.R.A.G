@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
-
+using Joss.Helpers;
+using System.Collections.Generic;
 
 public class ShapeChanger : MonoBehaviour
 {
@@ -14,16 +15,20 @@ public class ShapeChanger : MonoBehaviour
     private float timer1;
     private float timer2;
 
-    [Range(0,63)]
+    [Range(0,7)]
     public int sidesBand;
-    [Range(0, 63)]
+    [Range(0, 7)]
     public int scaleXBand;
-    [Range(0, 63)]
+    [Range(0, 7)]
     public int scaleYBand;
-    [Range(0, 63)]
+    [Range(0, 7)]
     public int offsetXBand;
-    [Range(0, 63)]
+    [Range(0, 7)]
     public int offsetYBand;
+
+    private List<float> sidesTrack = new List<float>();
+    private List<float> offXTrack = new List<float>();
+    private List<float> offYTrack = new List<float>();
 
     void Start()
     {
@@ -57,7 +62,11 @@ public class ShapeChanger : MonoBehaviour
     {
         timer1 -= beatInterval;
         sides = AudioPeer._audioBandBuffer[sidesBand];
-        sides = Mathf.Lerp(4f, 9f, sides);
+        //sidesTrack.Add(sides);
+        float maxSides = AdaptScaleMax(sides, sidesTrack, 10);
+
+        sides = Toolbox.Remap(sides, 0f, maxSides, 4f, 9f);
+        Debug.Log("Now sides is " + sides);
         sides = (float)Math.Round(sides);
 
 
@@ -65,9 +74,30 @@ public class ShapeChanger : MonoBehaviour
 
         int random = UnityEngine.Random.Range(0, 2) * 2 - 1;
         int random2 = UnityEngine.Random.Range(0, 2) * 2 - 1;
-        float offsetX = Mathf.Lerp(0, 0.25f, AudioPeer._audioBandBuffer[offsetXBand]);
-        float offsetY = Mathf.Lerp(0, 0.25f, AudioPeer._audioBandBuffer[offsetYBand]);
+
+        float offsetX = AudioPeer._audioBandBuffer[offsetXBand];
+        float offsetY = AudioPeer._audioBandBuffer[offsetYBand];
+        float maxOffsetX = AdaptScaleMax(offsetX, offXTrack, 10);
+        float maxOffsetY = AdaptScaleMax(offsetY, offYTrack, 10);
+        offsetX = Toolbox.Remap(AudioPeer._audioBandBuffer[offsetXBand], 0f, maxOffsetX, 0f, 0.2f);
+        offsetY = Toolbox.Remap(AudioPeer._audioBandBuffer[offsetYBand], 0f, maxOffsetY, 0f, 0.2f);
+
         Vector2 offsetXY = new Vector2(offsetX * random, offsetY * random2);
         _quadShader.material.SetVector("_OffsetSmall", offsetXY);
+    }
+
+    float AdaptScaleMax(float f, List<float> l, int t) {
+        //change the scale of a lerp function based on the avg of the last t number of calls
+        l.Add(f);
+        if (l.Count > t)
+            l.RemoveAt(0);
+        float total = 0;
+        foreach(float item in l)
+        {
+            total += item;
+        }
+        total = total / l.Count;
+        float max = total * 2;
+        return max;
     }
 }
